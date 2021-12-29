@@ -16,7 +16,8 @@ public class RandomWalkGenerator : MonoBehaviour
     //public bool StartEachInterationRandom = true; //Vi bruger nok ikke dette så kan fjernes
     [SerializeField]
     private TileMapGeneration tilemapGenerator;
-    public GameObject enemyTemplate; 
+    public GameObject[] enemyTemplate; 
+    public GameObject chestTemplate; 
 
     private HashSet<Vector2Int> drawnTilesList = new HashSet<Vector2Int>();
 
@@ -44,12 +45,21 @@ public class RandomWalkGenerator : MonoBehaviour
     }
     public void SpawnEnemysRandom() {
         Vector2Int drawnTilePos = drawnTilesList.ElementAt(Random.Range(0, drawnTilesList.Count));
-        GameObject enemy = Instantiate(enemyTemplate, new Vector3 (drawnTilePos.x, drawnTilePos.y), Quaternion.identity);
+        GameObject enemy = Instantiate(enemyTemplate[(Random.Range(0, enemyTemplate.Length))], new Vector3 (drawnTilePos.x, drawnTilePos.y), Quaternion.identity);
         drawnTilesList.Remove(drawnTilePos);
         for (int i = 0; i < Algorithms.Directions.cardinalDirectionsList.Count; i++)
         {
              drawnTilesList.Remove(drawnTilePos - Algorithms.Directions.cardinalDirectionsList[i]);
-             Debug.Log(i); //Debug skal slettes
+        }
+    }
+
+    public void SpawnChestsRandom() {
+        Vector2Int drawnTilePos = drawnTilesList.ElementAt(Random.Range(0, drawnTilesList.Count));
+        GameObject chest = Instantiate(chestTemplate, new Vector3 (drawnTilePos.x, drawnTilePos.y), Quaternion.identity);
+        drawnTilesList.Remove(drawnTilePos);
+        for (int i = 0; i < Algorithms.Directions.cardinalDirectionsList.Count; i++)
+        {
+             drawnTilesList.Remove(drawnTilePos - Algorithms.Directions.cardinalDirectionsList[i]);
         }
     }
     protected HashSet<Vector2Int> RunRandomWalk()

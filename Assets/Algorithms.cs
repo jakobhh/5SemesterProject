@@ -24,10 +24,10 @@ public static class Algorithms
 
 public static class Directions {
     public static List<Vector2Int> cardinalDirectionsList = new List<Vector2Int> {
-        new Vector2Int(0, 1), //Op  
-        new Vector2Int(1, 0), //Højre
-        new Vector2Int(0, -1), //Ned
-        new Vector2Int(-1, 0) //Venstre
+        new Vector2Int(0, 1),   //Op -      0
+        new Vector2Int(1, 0),   //Højre -   1
+        new Vector2Int(0, -1),  //Ned -     2
+        new Vector2Int(-1, 0)   //Venstre - 3
     };
 
     public static Vector2Int GetRandomCardinalDirection(){

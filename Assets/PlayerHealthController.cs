@@ -10,6 +10,7 @@ public static int health;
 public static int maxHealth = 3;
 public static int maxHearts;
 private static float nextDmgTick;
+public MenuHandler menuHandler;
 
 [SerializeField] private static float dmgTick = 1f;
 
@@ -18,7 +19,7 @@ public Sprite heartFilled;
 public Sprite hearthEmpty;
 
 
-    void Start()
+    void Start()    
     {
        health = maxHealth;
        maxHearts = hearts.Length;
@@ -27,6 +28,12 @@ public Sprite hearthEmpty;
     void Update()
     {
         HealthbarHandle();
+
+        if (health <= 0)
+        {
+            menuHandler.MenuLoseGame();
+            Debug.Log("END GAME");
+        }
     }
 
     public void HealthbarHandle() 
@@ -72,24 +79,5 @@ public Sprite hearthEmpty;
             nextDmgTick = Time.time + dmgTick;
         }
     }
-
-/*        void OnCollisionEnter(Collision obj)
-    {
-        if (obj.gameObject.tag =="EnemyAura") //Dmg on collision with enemy
-        {
-            health = health - 1;
-            Debug.Log("lose health");
-        }
-
-        if (obj.gameObject.tag == "Healer" && health <= maxHealth) //heal on collision with heal powerup
-        {
-            health = health + 1;
-        }
-
-        if (obj.gameObject.tag == "ExtraHealth" && maxHealth < hearts.Length) //Gain 1 extra max health and heal 1 if the max hearts is not already hit.
-        {
-            maxHealth = maxHealth + 1;
-        }
-    }*/
 }
 }

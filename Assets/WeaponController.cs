@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class WeaponController : MonoBehaviour
 {
 public GameObject projectile;
 public Transform spawnPoint;
 public float projectileSpeed;
 public float projectileLifeTime;
-public float fireRate = 1F;   
+public float baseFireRate = 1F;
+private float fireRate;
 public float nextShotTime = 0; 
+public static float fireRateEndTime;
+public Image fireRateBoostImg;
+
+public Text fireRateBoostTextTimer;
+
 
     void Update()
     {
@@ -21,9 +27,25 @@ public float nextShotTime = 0;
             {
                 nextShotTime = Time.time + fireRate;
                 GameObject ball = Instantiate(projectile, spawnPoint.position, transform.rotation);
-                ball.GetComponent<Rigidbody>().AddRelativeForce(new Vector2 (projectileSpeed, 0));
+                ball.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2 (projectileSpeed, 0));
                 Destroy(ball, projectileLifeTime);
             }
+        //FireRate Booster
+        if (fireRateEndTime > Time.time) 
+            {
+                fireRate = baseFireRate * 0.75f;
+                fireRateBoostImg.enabled = true;
+                fireRateBoostTextTimer.enabled = true;
+                fireRateBoostTextTimer.text = (fireRateEndTime - Time.time).ToString("#.0");
+            } else {
+                fireRate = baseFireRate;
+                fireRateBoostImg.enabled = false;
+                fireRateBoostTextTimer.enabled = false;
+            } 
+    }
+    public static void FireRateBoost(float fireRateDuration)
+    {
+        fireRateEndTime = fireRateDuration + Time.time;
     }
     
 }
