@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public Text bossDoorHint;
     void FixedUpdate()
     {
-        // Player movement X & Z.
+        // Player movement X & Y.
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         gameObject.transform.position = new Vector2(transform.position.x + (h * speed), transform.position.y + (v * speed));

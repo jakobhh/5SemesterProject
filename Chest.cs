@@ -20,7 +20,6 @@ public class Chest : MonoBehaviour
             Destroy(gameObject);
 
         float randomFloat = Random.Range(0f, 100f);
-        print(randomFloat); //Er der kun for test
 
         if(randomFloat <= 5) {                                  //Extra Heart 5%
             Instantiate(lootTable[0], realPosition, rotation);

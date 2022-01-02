@@ -56,7 +56,7 @@ public static List<BoundsInt> BSP(BoundsInt space, int minX, int minY)
         BoundsInt room2 = new BoundsInt(new Vector3Int(room.min.x + xSplit, room.min.y, room.min.z),
         new Vector3Int(room.size.x - xSplit, room.size.y, room.size.z));
         roomQueue.Enqueue(room1);
-        roomQueue.Enqueue(room2);   
+        roomQueue.Enqueue(room2);
     }
 
     private static void SplitSpaceHorizontally(int minY, Queue<BoundsInt> roomQueue, BoundsInt room)

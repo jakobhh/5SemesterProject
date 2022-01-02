@@ -13,7 +13,6 @@ public class Explosion : MonoBehaviour
         col = GetComponent<SphereCollider>();
 
         playerPos = FindObjectOfType<PlayerController>().transform;
-        print(Vector2.Distance(playerPos.position, transform.position) + " |" + col.radius);
         Destroy(gameObject, 1);
 
         if (Vector2.Distance(playerPos.position, transform.position) < col.radius)

@@ -38,19 +38,13 @@ public class RandomWalkGenerator : AbstractGeneration
         tilemapGenerator.Clear();
         tilemapGenerator.drawFloorTiles(floorPos);
         WallGenerator.CreateWalls(floorPos, tilemapGenerator);
-        drawnTilesList.Clear(); //SKAL MÅSKE FJERENES SENRE ALT EFTER HVORDAN GENERATION MED FLERE RUM VIRKER
+        drawnTilesList.Clear();
         foreach (var position in floorPos)
         {
-            Debug.Log(position); //Debug, skal slettes senere
             if (!(drawnTilesList.Contains(position))) {
                 drawnTilesList.Add(position);
             }
             
-        }
-        Vector2Int[] arr = drawnTilesList.ToArray();  //Debug, skal slettes senere
-        for (int i = 0; i < drawnTilesList.Count; i++) //Debug, skal slettes senere
-        {
-            Debug.Log("Drawn:" + arr[i]);
         }
     }
 
@@ -151,9 +145,6 @@ public class RandomWalkGenerator : AbstractGeneration
         {
             var path = Algorithms.RandomWalk(pos, walkLenght);
             floorPos.UnionWith(path); 
-            
-
-        
         }
         return floorPos;
     }

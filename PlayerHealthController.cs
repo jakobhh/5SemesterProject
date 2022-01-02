@@ -32,13 +32,11 @@ public Sprite hearthEmpty;
         if (health <= 0)
         {
             menuHandler.MenuLoseGame();
-            Debug.Log("END GAME");
         }
     }
 
     public void HealthbarHandle() 
     {
-        healthBox.text = "Health:" + health + "/" + maxHealth; //bruges kun til test
         for (int i = 0; i < maxHearts; i++)
         {
             if (i < maxHealth)

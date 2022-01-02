@@ -9,7 +9,6 @@ public class Barrel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("TEst");
         if (other.gameObject.tag == "PlayerProjectile")
         {
             var rotation = new Quaternion();
@@ -18,7 +17,6 @@ public class Barrel : MonoBehaviour
             Destroy(gameObject);
 
         float randomFloat = Random.Range(0f, 100f);
-        print(randomFloat); //Er der kun for test
 
         if(randomFloat <= 15) {                                  //Weapon 1 15%
             Instantiate(lootTable[0], realPosition, rotation);

@@ -42,11 +42,11 @@ public class ProjectileTargetPlayer : MonoBehaviour
         }
         else if (stopAtPlayerPos == false && trackPlayer == false)
         {
-            //add projectile that moves towards player but disapears after projectileLifeTime
+            //maybe add projectile that moves towards player but disapears after projectileLifeTime. Future project
         }
         else if (stopAtPlayerPos == true && trackPlayer == true)
         {
-            Debug.Log("The Projectile can not both: Track player, & Stop at player pos");
+            print("The Projectile can not both: Track player, & Stop at player pos");
             Destroy(gameObject);
         }   
     }
